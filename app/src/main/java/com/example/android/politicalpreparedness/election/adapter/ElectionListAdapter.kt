@@ -5,13 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.politicalpreparedness.databinding.ListItemElectionBinding
-//import com.example.android.politicalpreparedness.databinding.ViewholderElectionBinding
+import com.example.android.politicalpreparedness.databinding.ViewholderElectionBinding
 import com.example.android.politicalpreparedness.network.models.Election
 
 class ElectionListAdapter(private val clickListener: ElectionListener) :
     ListAdapter<Election, ElectionListAdapter.ElectionViewHolder>(ElectionDiffCallback) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionViewHolder {
         return ElectionViewHolder.from(parent)
@@ -23,7 +21,7 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
     }
 
     //: Create ElectionViewHolder
-    class ElectionViewHolder private constructor(private val binding: ListItemElectionBinding) :
+    class ElectionViewHolder private constructor(private val binding: ViewholderElectionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(election: Election, clickListener: ElectionListener) {
@@ -31,11 +29,12 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
+
         //: Add companion object to inflate ViewHolder (from)
         companion object {
             fun from(parent: ViewGroup): ElectionViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
-                val view = ListItemElectionBinding.inflate(inflater, parent, false)
+                val view = ViewholderElectionBinding.inflate(inflater, parent, false)
                 return ElectionViewHolder(view)
             }
         }
@@ -51,7 +50,6 @@ class ElectionListAdapter(private val clickListener: ElectionListener) :
         override fun areContentsTheSame(oldItem: Election, newItem: Election): Boolean {
             return oldItem.id == newItem.id
         }
-
     }
 }
 

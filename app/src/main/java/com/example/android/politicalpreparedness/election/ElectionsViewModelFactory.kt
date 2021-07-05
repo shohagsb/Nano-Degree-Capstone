@@ -12,6 +12,4 @@ class ElectionsViewModelFactory(private val  database: ElectionDatabase): ViewMo
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-
-
 }
