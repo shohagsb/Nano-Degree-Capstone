@@ -6,5 +6,6 @@
     <string name="ballot_image">ballot image</string>
     <string name="upcoming_elections">Upcoming Elections</string>
     <string name="find_my_representatives">Find My Representatives</string>
+    <string name="follow_election">Follow Election</string>
 
 </resources>

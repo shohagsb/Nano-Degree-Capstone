@@ -33,6 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
+            listData="@{viewModel.upcomingElections}"
+            tools:listitem="@layout/viewholder_election"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_label"
             app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label" />
@@ -56,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
+            tools:listitem="@layout/viewholder_representative"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saved_election_label" />
