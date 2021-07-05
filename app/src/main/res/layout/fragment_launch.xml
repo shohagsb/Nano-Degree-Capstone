@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/ballot_image"
             android:src="@drawable/ballot_logo"
-            app:layout_constraintBottom_toTopOf="@+id/electionBtn"
+            app:layout_constraintBottom_toTopOf="@+id/upcomingButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -21,20 +21,20 @@
 
         <!-- : Add Button to navigate to upcoming elections. -->
         <Button
-            android:id="@+id/electionBtn"
+            android:id="@+id/upcomingButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/upcoming_elections"
             android:textColor="@color/white"
             android:layout_margin="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/findRepresentativeBtn" />
+            app:layout_constraintBottom_toTopOf="@+id/representativeButton" />
 
 
 
         <!-- : Add Button to navigate to representatives. -->
         <Button
-            android:id="@+id/findRepresentativeBtn"
+            android:id="@+id/representativeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
