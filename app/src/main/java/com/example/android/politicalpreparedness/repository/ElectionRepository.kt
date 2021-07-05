@@ -16,6 +16,7 @@ class ElectionRepository(private val database: ElectionDatabase) {
                 Log.d("ElectionRepoTAG", "refreshUpcomingElectionFromNetwork: $asteroidsResult")
                 //database.asteroidDao.insertAll(*asteroidsResult.toTypedArray())
             } catch (e: Exception) {
+                Log.d("ElectionRepoTAG", "refreshUpcomingElectionFromNetwork: ${e.message}")
 
             }
         }
