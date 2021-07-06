@@ -32,6 +32,14 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+private val retrofit2 = Retrofit.Builder()
+//    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .addConverterFactory(ScalarsConverterFactory.create())
+    .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    .client(CivicsHttpClient.getClient())
+    .baseUrl(BASE_URL)
+    .build()
+
 /**
  *  Documentation for the Google Civics API Service can be found at https://developers.google.com/civic-information/docs/v2
  */
@@ -58,5 +66,8 @@ interface CivicsApiService {
 object CivicsApi {
     val retrofitService: CivicsApiService by lazy {
         retrofit.create(CivicsApiService::class.java)
+    }
+    val retrofitService2: CivicsApiService by lazy {
+        retrofit2.create(CivicsApiService::class.java)
     }
 }

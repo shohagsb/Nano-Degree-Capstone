@@ -30,14 +30,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/upcoming_election_rc"
+            listData="@{viewModel.upcomingElections}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            listData="@{viewModel.upcomingElections}"
-            tools:listitem="@layout/viewholder_election"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_label"
-            app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label" />
+            app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label"
+            tools:listitem="@layout/viewholder_election" />
 
 
         <!-- : Add Saved Election Recycler and Header -->
@@ -55,13 +55,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/saved_election_rc"
+            listData="@{viewModel.savedElections}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="8dp"
-            tools:listitem="@layout/viewholder_representative"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/saved_election_label" />
+            app:layout_constraintTop_toBottomOf="@+id/saved_election_label"
+            tools:listitem="@layout/viewholder_election" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,6 +3,7 @@ package com.example.android.politicalpreparedness.repository
 import android.util.Log
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.CivicsApi
+import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import kotlinx.coroutines.Dispatchers
@@ -19,11 +20,33 @@ class ElectionRepository(private val database: ElectionDatabase) {
     }.flowOn(Dispatchers.IO)
 
     // Fetch Voter Info data from Network
-    fun getVoterInfo(id: Long, address: String): Flow<VoterInfoResponse> = flow {
+    fun getVoterInfo(address: String, id: Long): Flow<VoterInfoResponse> = flow {
         val voterInfo = CivicsApi.retrofitService.getVoterInfo(address, id)
         Log.d("ElectionRepositoryTAG", "getVoterInfo: $voterInfo")
         emit(voterInfo)
     }.flowOn(Dispatchers.IO)
+
+    // Insert election to room database
+    suspend fun insertElection(election: Election){
+        database.electionDao.insertElection(election)
+    }
+
+    // Fetch all election from room database
+    fun getAllSavedElectionsFromDB(): Flow<List<Election>> = flow {
+        val savedElections = database.electionDao.getAllSavedElections()
+        emit(savedElections)
+    }.flowOn(Dispatchers.IO)
+
+    // Fetch Single election from room database
+    fun getSingleElectionFromDB(id: Long): Flow<Election?> = flow {
+        val election = database.electionDao.getSingleElection(id)
+        emit(election)
+    }.flowOn(Dispatchers.IO)
+
+    // Delete election from room database
+    suspend fun deleteElection(id: Long) {
+        database.electionDao.deleteElection(id)
+    }
 
 
 }

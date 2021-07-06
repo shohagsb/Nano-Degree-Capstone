@@ -51,16 +51,27 @@ class ElectionsFragment : Fragment() {
             }
         })
 
-        //TODO: Initiate recycler adapters
-        binding.upcomingElectionRc.adapter = ElectionListAdapter(ElectionListener { election ->
+        //: Initiate recycler adapters
+        val electionAdapter = ElectionListAdapter(ElectionListener { election ->
             viewModel.onElectionClicked(election)
         })
+        //electionAdapter.setHasStableIds(true)
+        binding.upcomingElectionRc.adapter = electionAdapter
+
+        val savedElectionAdapter = ElectionListAdapter(ElectionListener { election ->
+            viewModel.onElectionClicked(election)
+        })
+        binding.savedElectionRc.adapter = savedElectionAdapter
+
         //TODO: Populate recycler adapters
 
 
         return binding.root
     }
 
-    //TODO: Refresh adapters when fragment loads
-
+    //: Refresh adapters when fragment loads
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllSavedElectionsFromDB()
+    }
 }
