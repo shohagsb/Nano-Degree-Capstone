@@ -26,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/default_padding"
+            android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
             android:singleLine="true"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@{viewModel.voterInfo.election.name}" />
@@ -55,7 +57,6 @@
             android:id="@+id/state_locations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.stateInfo.electionAdministrationBody.correspondenceAddress.line1}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_header" />
 
@@ -87,6 +88,7 @@
             android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{viewModel.stateInfo.electionAdministrationBody.correspondenceAddress.line1}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
 
@@ -101,6 +103,18 @@
             tools:text="@string/follow_election"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/loadingIv"
+            apiStatus="@{viewModel.status}"
+            android:layout_width="@dimen/loading_img_size"
+            android:layout_height="@dimen/loading_img_size"
+            android:contentDescription="@string/loading_status"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

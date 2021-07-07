@@ -11,6 +11,7 @@ import com.example.android.politicalpreparedness.network.models.Election
 import com.example.android.politicalpreparedness.network.models.State
 import com.example.android.politicalpreparedness.network.models.VoterInfoResponse
 import com.example.android.politicalpreparedness.repository.ElectionRepository
+import com.example.android.politicalpreparedness.utils.Constants
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -34,19 +35,26 @@ class VoterInfoViewModel(
     val stateInfo: LiveData<State>
         get() = _stateInfo
 
+    private val _status = MutableLiveData<Constants.ApiStatus>()
+    val status: LiveData<Constants.ApiStatus>
+        get() = _status
+
     init {
-        getVoterInfo()
+        getVoterInfoFromNetwork()
         getSingleElectionFromDB()
     }
 
     //: Add var and methods to populate voter info
-    private fun getVoterInfo() {
+    private fun getVoterInfoFromNetwork() {
         viewModelScope.launch {
+            _status.value = Constants.ApiStatus.LOADING
             repository.getVoterInfo(division.state, id)
                 .catch {
+                    _status.value = Constants.ApiStatus.ERROR
                     _errorMsg.value = it.message
                 }
                 .collect { voterInfo ->
+                    _status.value = Constants.ApiStatus.DONE
                     _voterInfo.value = voterInfo
                     _stateInfo.value = voterInfo.state?.get(0)
                 }

@@ -37,7 +37,20 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_label"
             app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label"
+            tools:layout_editor_absoluteX="8dp"
             tools:listitem="@layout/viewholder_election" />
+
+        <ImageView
+            android:id="@+id/loadingIv"
+            android:layout_width="@dimen/loading_img_size"
+            android:layout_height="@dimen/loading_img_size"
+            apiStatus="@{viewModel.status}"
+            android:visibility="gone"
+            android:contentDescription="@string/loading_status"
+            app:layout_constraintBottom_toBottomOf="@+id/upcoming_election_rc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label" />
 
 
         <!-- : Add Saved Election Recycler and Header -->

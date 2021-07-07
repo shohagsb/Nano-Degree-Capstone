@@ -34,10 +34,15 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
 
         fun bind(item: Representative) {
             binding.representative = item
-            //binding.representativePhoto.setImageResource(R.drawable.ic_profile)
+            binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
-            //TODO: Show social links ** Hint: Use provided helper methods
-            //TODO: Show www link ** Hint: Use provided helper methods
+            //: Show social links ** Hint: Use provided helper methods
+            item.official.channels?.let { channels->
+                showSocialLinks(channels)
+            }
+
+            //: Show www link ** Hint: Use provided helper methods
+            item.official.urls?.let { showWWWLinks(it) }
 
             binding.executePendingBindings()
         }
@@ -54,17 +59,17 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
         private fun showSocialLinks(channels: List<Channel>) {
             val facebookUrl = getFacebookUrl(channels)
             if (!facebookUrl.isNullOrBlank()) {
-                //enableLink(binding.facebookIcon, facebookUrl)
+                enableLink(binding.facebookIcon, facebookUrl)
             }
 
             val twitterUrl = getTwitterUrl(channels)
             if (!twitterUrl.isNullOrBlank()) {
-                //enableLink(binding.twitterIcon, twitterUrl)
+                enableLink(binding.twitterIcon, twitterUrl)
             }
         }
 
         private fun showWWWLinks(urls: List<String>) {
-            //enableLink(binding.wwwIcon, urls.first())
+            enableLink(binding.wwwIcon, urls.first())
         }
 
         private fun getFacebookUrl(channels: List<Channel>): String? {

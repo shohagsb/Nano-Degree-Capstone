@@ -8,5 +8,17 @@
     <string name="find_my_representatives">Find My Representatives</string>
     <string name="follow_election">Follow Election</string>
     <string name="unfollow_election">Unfollow Election</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="representative_search">Representative Search</string>
+    <string name="my_representatives">My Representatives</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+    <string name="facebook_icon">Facebook Icon</string>
+    <string name="twitter_icon">Twitter Icon</string>
+    <string name="www_icon">WWW Icon</string>
+    <string name="profile_icon">Profile Icon</string>
+    <string name="loading_status">Loading Status</string>
 
 </resources>
