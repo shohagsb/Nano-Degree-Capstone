@@ -1,5 +1,7 @@
 package com.example.android.politicalpreparedness.election
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -47,7 +49,20 @@ class VoterInfoFragment : Fragment() {
         binding.voterInfo = division
 
 
-        //TODO: Handle loading of URLs
+        //: Handle loading of URLs
+        viewModel.navigateToVotingUrl.observe(viewLifecycleOwner, {
+            it?.let { votingLocationUrl ->
+                loadUrl(votingLocationUrl)
+                viewModel.openVotingLocationComplete()
+            }
+        })
+
+        viewModel.navigateToBallotUrl.observe(viewLifecycleOwner, {
+            it?.let { ballotUrl ->
+                loadUrl(ballotUrl)
+                viewModel.openBallotUrlComplete()
+            }
+        })
 
         //: Handle save button UI state
         //: cont'd Handle save button clicks
@@ -59,5 +74,10 @@ class VoterInfoFragment : Fragment() {
     }
 
     //TODO: Create method to load URL intents
+    private fun loadUrl(urlStr: String) {
+        val uri: Uri = Uri.parse(urlStr)
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
 
 }

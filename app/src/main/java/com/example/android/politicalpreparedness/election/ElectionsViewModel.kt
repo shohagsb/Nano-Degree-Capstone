@@ -32,7 +32,6 @@ class ElectionsViewModel(val database: ElectionDatabase) : ViewModel() {
 
     init {
         getUpcomingElectionsFromNetwork()
-        //getAllSavedElectionsFromDB()
     }
 
     //: Create val and functions to populate live data for upcoming elections from the API and saved elections from local database

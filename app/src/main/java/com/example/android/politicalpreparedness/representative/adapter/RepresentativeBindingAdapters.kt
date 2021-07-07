@@ -8,6 +8,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.representative.model.Representative
 
 
@@ -26,6 +27,11 @@ fun fetchImage(view: ImageView, src: String?) {
         //: Add Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
         Glide.with(view.context)
             .load(uri)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_profile)
+            )
             .into(view)
     }
 }

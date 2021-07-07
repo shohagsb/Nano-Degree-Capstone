@@ -63,6 +63,29 @@ class VoterInfoViewModel(
 
 
     //TODO: Add var and methods to support loading URLs
+    private val _navigateToVotingUrl = MutableLiveData<String>()
+    val navigateToVotingUrl: LiveData<String>
+        get() = _navigateToVotingUrl
+
+    fun openVotingLocationUrl() {
+        _navigateToVotingUrl.value = stateInfo.value?.electionAdministrationBody?.votingLocationFinderUrl
+    }
+
+    fun openVotingLocationComplete() {
+        _navigateToVotingUrl.value = null
+    }
+
+    private val _navigateToBallotUrl = MutableLiveData<String>()
+    val navigateToBallotUrl: LiveData<String>
+        get() = _navigateToBallotUrl
+
+    fun openBallotUrl() {
+        _navigateToBallotUrl.value = stateInfo.value?.electionAdministrationBody?.ballotInfoUrl
+    }
+
+    fun openBallotUrlComplete() {
+        _navigateToBallotUrl.value = null
+    }
 
     //: Add var and methods to save and remove elections to local database
     //: cont'd -- Populate initial state of save button to reflect proper action based on election saved status

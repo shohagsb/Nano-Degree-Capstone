@@ -25,12 +25,12 @@
             android:id="@+id/election_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding"
             android:background="@color/colorPrimary"
-            app:titleTextColor="@color/white"
+            android:padding="@dimen/default_padding"
             android:singleLine="true"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="@{viewModel.voterInfo.election.name}" />
+            app:title="@{viewModel.voterInfo.election.name}"
+            app:titleTextColor="@color/white" />
 
         <!-- TODO: Add visual styling -->
         <TextView
@@ -57,6 +57,8 @@
             android:id="@+id/state_locations"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.openVotingLocationUrl()}"
+            android:text="@string/voting_locations"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_header" />
 
@@ -66,6 +68,8 @@
             android:id="@+id/state_ballot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.openBallotUrl()}"
+            android:text="@string/ballot_information"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_locations" />
 
@@ -100,9 +104,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@color/colorPrimary"
-            tools:text="@string/follow_election"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="@string/follow_election" />
 
         <ImageView
             android:id="@+id/loadingIv"
