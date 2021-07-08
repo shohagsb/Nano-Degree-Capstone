@@ -62,7 +62,7 @@ class VoterInfoViewModel(
     }
 
 
-    //TODO: Add var and methods to support loading URLs
+    //: Add var and methods to support loading URLs
     private val _navigateToVotingUrl = MutableLiveData<String>()
     val navigateToVotingUrl: LiveData<String>
         get() = _navigateToVotingUrl

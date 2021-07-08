@@ -26,11 +26,10 @@
             android:id="@+id/upcomingButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             android:text="@string/upcoming_elections"
-            android:textColor="@color/white"
             android:layout_margin="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/representativeButton" />
+            app:layout_constraintBottom_toTopOf="@+id/representativeButton"
+            style="@style/button_style" />
 
 
 
@@ -41,8 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:text="@string/find_my_representatives"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
+            style="@style/button_style"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

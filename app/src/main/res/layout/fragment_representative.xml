@@ -104,9 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@color/colorPrimary"
             android:text="@string/find_my_representatives"
-            android:textColor="@color/white"
+            style="@style/button_style"
             app:layout_constraintTop_toBottomOf="@id/zip" />
 
         <!-- TODO: Add visual styling and content -->
@@ -115,9 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@color/colorPrimary"
+            style="@style/button_style"
             android:text="@string/use_my_location"
-            android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/button_search" />
 
         <!-- TODO: Add visual styling and content -->
