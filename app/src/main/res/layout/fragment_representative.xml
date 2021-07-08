@@ -77,6 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints=""
+            stateNewValue="@{viewModel.address.state}"
             android:inputType="textPostalAddress"
             app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"

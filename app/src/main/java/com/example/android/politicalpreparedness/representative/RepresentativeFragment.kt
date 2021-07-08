@@ -16,6 +16,7 @@ import android.provider.Settings
 import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -83,6 +84,17 @@ class DetailFragment : Fragment() {
         binding.buttonLocation.setOnClickListener {
             checkLocationPermissions()
         }
+
+
+//        binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//               //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+//            }
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+//               // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+//            }
+//        }
         return binding.root
     }
 
@@ -182,7 +194,7 @@ class DetailFragment : Fragment() {
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     val geoAddress = geoCodeLocation(location)
-                    viewModel.setAddress(geoAddress)
+                    viewModel.address = geoAddress
                     viewModel.getRepresentativesFromNetwork()
                     Log.d(TAG, "getLocation: ${geoAddress.city}")
 
