@@ -27,7 +27,6 @@ class RepresentativeViewModel : ViewModel(), Observable {
     val representatives: LiveData<List<Representative>>
         get() = _representatives
 
-
     private val _status = MutableLiveData<Constants.ApiStatus>()
     val status: LiveData<Constants.ApiStatus>
         get() = _status
@@ -87,36 +86,5 @@ class RepresentativeViewModel : ViewModel(), Observable {
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         propertyChangeRegistry.remove(callback)
     }
-
-    private var _inputMsg = MutableLiveData<String?>()
-    val inputMsg: LiveData<String?>
-        get() = _inputMsg
-
-    private fun isValidateInputs(): Boolean {
-        when {
-            address.line1.isEmpty() -> {
-                _inputMsg.value = "Enter Line1"
-                return false
-            }
-            address.line2.isNullOrEmpty() -> {
-                _inputMsg.value = "Enter Lin2"
-                return false
-            }
-            address.city.isEmpty() -> {
-                _inputMsg.value = "Enter City"
-                return false
-            }
-            address.state.isEmpty() -> {
-                _inputMsg.value = "Enter State"
-                return false
-            }
-            address.zip.isEmpty() -> {
-                _inputMsg.value = "Enter Zip"
-                return false
-            }
-            else -> return true
-        }
-    }
-
 
 }

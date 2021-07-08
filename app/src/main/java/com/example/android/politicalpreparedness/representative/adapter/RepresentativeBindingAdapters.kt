@@ -36,7 +36,7 @@ fun fetchImage(view: ImageView, src: String?) {
     }
 }
 
-@BindingAdapter("stateNewValue")
+@BindingAdapter("stateValue")
 fun Spinner.setNewValue(value: String?) {
     val adapter = toTypedAdapter<String>(this.adapter as ArrayAdapter<*>)
     val position = when (adapter.getItem(0)) {

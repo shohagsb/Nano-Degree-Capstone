@@ -86,15 +86,15 @@ class DetailFragment : Fragment() {
         }
 
 
-//        binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//               //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
-//            }
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//               // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
-//            }
-//        }
+        binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+               //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+               // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+            }
+        }
         return binding.root
     }
 

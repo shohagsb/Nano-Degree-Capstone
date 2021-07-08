@@ -55,8 +55,9 @@
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_locations"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
             android:onClick="@{()-> viewModel.openVotingLocationUrl()}"
             android:text="@string/voting_locations"
             app:layout_constraintStart_toStartOf="@id/election_date"
@@ -66,10 +67,11 @@
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_ballot"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{()-> viewModel.openBallotUrl()}"
             android:text="@string/ballot_information"
+            android:padding="@dimen/default_padding"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_locations" />
 
@@ -82,16 +84,19 @@
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/state_correspondence_header"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:text="@string/mailing_address"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_ballot" />
 
         <!-- TODO: Add data binding -->
         <TextView
             android:id="@+id/address"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
             android:text="@{viewModel.stateInfo.electionAdministrationBody.correspondenceAddress.line1}"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
@@ -103,8 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
+            style="@style/button_style"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="@string/follow_election" />
 

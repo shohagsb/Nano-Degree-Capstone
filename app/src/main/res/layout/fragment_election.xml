@@ -19,12 +19,11 @@
         <!-- : Add Upcoming Election Recycler and Header -->
         <TextView
             android:id="@+id/upcoming_election_label"
+            style="@style/title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/default_padding"
             android:text="@string/upcoming_elections"
-            android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/upcoming_election_rc"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,20 +32,19 @@
             listData="@{viewModel.upcomingElections}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/default_padding"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_label"
             app:layout_constraintTop_toBottomOf="@+id/upcoming_election_label"
-            tools:layout_editor_absoluteX="8dp"
             tools:listitem="@layout/viewholder_election" />
 
         <ImageView
             android:id="@+id/loadingIv"
+            apiStatus="@{viewModel.status}"
             android:layout_width="@dimen/loading_img_size"
             android:layout_height="@dimen/loading_img_size"
-            apiStatus="@{viewModel.status}"
-            android:visibility="gone"
             android:contentDescription="@string/loading_status"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/upcoming_election_rc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,12 +55,11 @@
 
         <TextView
             android:id="@+id/saved_election_label"
+            style="@style/title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/default_padding"
             android:text="@string/upcoming_elections"
-            android:textSize="22sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_rc"
             app:layout_constraintTop_toBottomOf="@+id/upcoming_election_rc" />
 
@@ -71,7 +68,7 @@
             listData="@{viewModel.savedElections}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/default_padding"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saved_election_label"
