@@ -46,12 +46,21 @@ fun bindAPILoadingStatus(statusImage: ImageView, status: Constants.ApiStatus?) {
     }
 }
 
-@BindingAdapter("isVisible")
-fun bindVisibility(view: TextView, hasData: Boolean) {
+@BindingAdapter("hasData")
+fun bindHasDataVisibility(textView: TextView, hasData: Boolean) {
     if (hasData) {
-        view.visibility = View.GONE
+        textView.visibility = View.GONE
     } else {
-        view.visibility = View.VISIBLE
+        textView.visibility = View.VISIBLE
+    }
+}
+
+@BindingAdapter("hasString")
+fun bindHasStringVisibility(tView: View, hasString: String?) {
+    if (hasString.isNullOrEmpty()) {
+        tView.visibility = View.GONE
+    } else {
+        tView.visibility = View.VISIBLE
     }
 }
 

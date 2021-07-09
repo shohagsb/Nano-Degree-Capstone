@@ -51,6 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding"
+            hasString="@{viewModel.stateInfo.electionAdministrationBody.votingLocationFinderUrl}"
             android:text="@string/election_information"
             app:layout_constraintEnd_toEndOf="@+id/election_date"
             app:layout_constraintStart_toStartOf="@id/election_date"
@@ -63,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_padding"
+            hasString="@{viewModel.stateInfo.electionAdministrationBody.votingLocationFinderUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/state_header">
@@ -85,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_padding"
+            hasString="@{viewModel.stateInfo.electionAdministrationBody.ballotInfoUrl}"
             app:layout_constraintEnd_toEndOf="@+id/state_locations_cv"
             app:layout_constraintStart_toStartOf="@+id/state_locations_cv"
             app:layout_constraintTop_toBottomOf="@id/state_locations_cv">
@@ -114,6 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding"
             android:text="@string/mailing_address"
+            hasString="@{viewModel.stateInfo.electionAdministrationBody.correspondenceAddress.line1}"
             app:layout_constraintEnd_toEndOf="@+id/state_ballot_cv"
             app:layout_constraintStart_toStartOf="@+id/state_ballot_cv"
             app:layout_constraintTop_toBottomOf="@id/state_ballot_cv" />

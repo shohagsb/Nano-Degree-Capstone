@@ -22,11 +22,11 @@
         <!-- : Add visual styling and content -->
         <TextView
             android:id="@+id/search_title"
+            style="@style/title_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/small_padding"
             android:text="@string/representative_search"
-            style="@style/title_style"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,6 @@
         <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
-            motion:stateValue="@{viewModel.newAddress.state}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="State"
@@ -84,7 +83,8 @@
             app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/city"
-            app:layout_constraintTop_toTopOf="@id/city" />
+            app:layout_constraintTop_toTopOf="@id/city"
+            motion:stateValue="@{viewModel.newAddress.state}" />
 
         <!-- : Add data binding value -->
         <!-- TODO: Add visual styling and content -->
@@ -122,11 +122,11 @@
         <!-- : Add visual styling and content -->
         <TextView
             android:id="@+id/representative_title"
+            style="@style/title_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/small_padding"
             android:text="@string/my_representatives"
-            style="@style/title_style"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/button_location" />
 
@@ -147,25 +147,26 @@
             android:layout_width="@dimen/loading_img_size"
             android:layout_height="@dimen/loading_img_size"
             android:contentDescription="@string/loading_status"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/representative_title" />
+            app:layout_constraintTop_toBottomOf="@+id/representative_title"
+            motion:visibilityMode="ignore" />
 
         <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/list_placeholder"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            hasData="@{viewModel.placeHolderStatus}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:textAlignment="center"
-            android:visibility="gone"
-            isVisible="@{viewModel.visibilityStatus}"
             android:text="@string/no_data"
-            android:textSize="16sp"
+            android:textAlignment="center"
             android:textColor="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="16sp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/representative_title"
             motion:visibilityMode="ignore" />
     </androidx.constraintlayout.motion.widget.MotionLayout>

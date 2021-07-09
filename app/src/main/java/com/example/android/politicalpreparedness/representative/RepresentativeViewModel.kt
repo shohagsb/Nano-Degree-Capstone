@@ -36,12 +36,12 @@ class RepresentativeViewModel : ViewModel(), Observable {
     val status: LiveData<Constants.ApiStatus>
         get() = _status
 
-    private val _visibilityStatus = MutableLiveData<Boolean>()
-    val visibilityStatus: LiveData<Boolean>
-        get() = _visibilityStatus
+    private val _placeHolderStatus = MutableLiveData<Boolean>()
+    val placeHolderStatus: LiveData<Boolean>
+        get() = _placeHolderStatus
 
     init {
-        _visibilityStatus.value = false
+        _placeHolderStatus.value = false
     }
 
     //: Create function to fetch representatives from API from a provided address
@@ -59,7 +59,7 @@ class RepresentativeViewModel : ViewModel(), Observable {
                 }
                 .collect { representativeResponse ->
                     _status.value = Constants.ApiStatus.DONE
-                    _visibilityStatus.value = true
+                    _placeHolderStatus.value = true
                     _representatives.value = representativeResponse.offices.flatMap { office ->
                         office.getRepresentatives(representativeResponse.officials)
                     }
