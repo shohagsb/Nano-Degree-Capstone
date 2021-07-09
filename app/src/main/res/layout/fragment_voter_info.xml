@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
-        <!-- TODO: Add title to toolbar -->
+        <!-- : Add title to toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/election_name"
             android:layout_width="match_parent"
@@ -39,41 +39,66 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_padding"
             android:text="@{viewModel.voterInfo.election.electionDay.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/election_name"
             tools:text="12 November 2055" />
 
-        <!-- TODO: Add visual styling and content -->
+        <!-- : Add visual styling and content -->
         <TextView
             android:id="@+id/state_header"
-            android:layout_width="wrap_content"
+            style="@style/title_style"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.stateInfo.name}"
+            android:layout_marginTop="@dimen/default_padding"
+            android:text="@string/election_information"
+            app:layout_constraintEnd_toEndOf="@+id/election_date"
             app:layout_constraintStart_toStartOf="@id/election_date"
             app:layout_constraintTop_toBottomOf="@id/election_date" />
 
-        <!-- TODO: Add click binding to open web URL -->
-        <!-- TODO: Add visual styling and content -->
-        <TextView
-            android:id="@+id/state_locations"
+        <!-- : Add click binding to open web URL -->
+        <!-- : Add visual styling and content -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/state_locations_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding"
-            android:onClick="@{()-> viewModel.openVotingLocationUrl()}"
-            android:text="@string/voting_locations"
-            app:layout_constraintStart_toStartOf="@id/election_date"
-            app:layout_constraintTop_toBottomOf="@id/state_header" />
+            android:layout_margin="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/state_header">
 
-        <!-- TODO: Add click binding to open web URL -->
-        <!-- TODO: Add visual styling and content -->
-        <TextView
-            android:id="@+id/state_ballot"
+            <TextView
+                android:id="@+id/state_locations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{()-> viewModel.openVotingLocationUrl()}"
+                android:padding="@dimen/default_padding"
+                android:text="@string/voting_locations"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+                style="@style/text_button_style" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- : Add click binding to open web URL -->
+        <!-- : Add visual styling and content -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/state_ballot_cv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{()-> viewModel.openBallotUrl()}"
-            android:text="@string/ballot_information"
-            android:padding="@dimen/default_padding"
-            app:layout_constraintStart_toStartOf="@id/election_date"
-            app:layout_constraintTop_toBottomOf="@id/state_locations" />
+            android:layout_margin="@dimen/default_padding"
+            app:layout_constraintEnd_toEndOf="@+id/state_locations_cv"
+            app:layout_constraintStart_toStartOf="@+id/state_locations_cv"
+            app:layout_constraintTop_toBottomOf="@id/state_locations_cv">
+
+            <TextView
+                android:id="@+id/state_ballot"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{()-> viewModel.openBallotUrl()}"
+                android:padding="@dimen/default_padding"
+                android:text="@string/ballot_information"
+                style="@style/text_button_style"
+                app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+        </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/address_group"
@@ -81,34 +106,36 @@
             android:layout_height="wrap_content"
             app:constraint_referenced_ids="state_correspondence_header,address" />
 
-        <!-- TODO: Add visual styling and content -->
+        <!-- : Add visual styling and content -->
         <TextView
             android:id="@+id/state_correspondence_header"
-            android:layout_width="match_parent"
+            style="@style/title_style"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding"
             android:text="@string/mailing_address"
-            app:layout_constraintStart_toStartOf="@id/election_date"
-            app:layout_constraintTop_toBottomOf="@id/state_ballot" />
+            app:layout_constraintEnd_toEndOf="@+id/state_ballot_cv"
+            app:layout_constraintStart_toStartOf="@+id/state_ballot_cv"
+            app:layout_constraintTop_toBottomOf="@id/state_ballot_cv" />
 
-        <!-- TODO: Add data binding -->
+        <!-- : Add data binding -->
         <TextView
             android:id="@+id/address"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="@dimen/default_padding"
             android:text="@{viewModel.stateInfo.electionAdministrationBody.correspondenceAddress.line1}"
-            app:layout_constraintStart_toStartOf="@id/election_date"
+            app:layout_constraintEnd_toEndOf="@+id/state_correspondence_header"
+            app:layout_constraintStart_toStartOf="@+id/state_correspondence_header"
             app:layout_constraintTop_toBottomOf="@id/state_correspondence_header" />
 
         <!-- : Add button to save election to Room -->
         <Button
             android:id="@+id/follow_btn"
+            style="@style/button_style"
             toggleText="@{viewModel.isElectionSaved}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            style="@style/button_style"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="@string/follow_election" />
 
