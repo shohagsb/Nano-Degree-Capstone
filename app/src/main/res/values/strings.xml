@@ -24,6 +24,7 @@
     <string name="ballot_information">Ballot Information</string>
     <string name="mailing_address">Mailing Address</string>
     <string name="election_information">Election Information</string>
+    <string name="select_a_state">Select a State!</string>
     <string name="no_data">No Data</string>
     <string name="permission_denied_explanation">
         You need to grant location permission to get current location.

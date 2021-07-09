@@ -39,7 +39,7 @@
             android:autofillHints="Address Line 1"
             android:hint="@string/address_line_1"
             android:inputType="textPostalAddress"
-            android:text="@{viewModel.address.line1}"
+            android:text="@={viewModel.newAddress.line1}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
 
@@ -52,7 +52,7 @@
             android:autofillHints="Address Line 2"
             android:hint="@string/address_line_2"
             android:inputType="textPostalAddress"
-            android:text="@{viewModel.address.line2}"
+            android:text="@={viewModel.newAddress.line1}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
 
@@ -65,7 +65,7 @@
             android:autofillHints="City"
             android:hint="@string/city"
             android:inputType="textPostalAddress"
-            android:text="@{viewModel.address.city}"
+            android:text="@={viewModel.newAddress.city}"
             app:layout_constraintEnd_toStartOf="@id/state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
@@ -75,7 +75,7 @@
         <!-- TODO: Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
-            stateValue="@{viewModel.address.state}"
+            motion:stateValue="@{viewModel.newAddress.state}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:autofillHints="State"
@@ -96,7 +96,7 @@
             android:hint="@string/zip"
             android:inputType="number"
             android:maxLength="5"
-            android:text="@{viewModel.address.zip}"
+            android:text="@={viewModel.newAddress.zip}"
             app:layout_constraintEnd_toEndOf="@id/city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />

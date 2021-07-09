@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -28,11 +27,8 @@ import com.example.android.politicalpreparedness.databinding.FragmentRepresentat
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListener
-import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.material.snackbar.Snackbar
 import java.util.Locale
 
@@ -87,7 +83,8 @@ class DetailFragment : Fragment() {
 
         //: Establish button listeners for field and location search
         binding.buttonSearch.setOnClickListener {
-            viewModel.getRepresentativesFromNetwork()
+            hideKeyboard()
+            viewModel.addNewAddress()
         }
         binding.buttonLocation.setOnClickListener {
             checkLocationPermissions()
@@ -96,7 +93,11 @@ class DetailFragment : Fragment() {
 
         binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+                Snackbar.make(
+                    binding.representativeFrag,
+                    R.string.select_a_state,
+                    Snackbar.LENGTH_SHORT
+                ).show()
             }
 
             override fun onItemSelected(
@@ -105,9 +106,10 @@ class DetailFragment : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+                viewModel.newAddress.state = binding.state.selectedItem as String
             }
         }
+
         return binding.root
     }
 
@@ -207,7 +209,7 @@ class DetailFragment : Fragment() {
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     val geoAddress = geoCodeLocation(location)
-                    viewModel.address = geoAddress
+                    viewModel.newAddress = geoAddress
                     viewModel.getRepresentativesFromNetwork()
                     Log.d(TAG, "getLocation: ${geoAddress.city}")
 

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.BR
+
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.repository.RepresentativeRepository
 import com.example.android.politicalpreparedness.representative.model.Representative
@@ -27,6 +28,10 @@ class RepresentativeViewModel : ViewModel(), Observable {
     val representatives: LiveData<List<Representative>>
         get() = _representatives
 
+//    private val _address = MutableLiveData<Address>()
+//    val address: LiveData<List<Representative>>
+//        get() = _address
+
     private val _status = MutableLiveData<Constants.ApiStatus>()
     val status: LiveData<Constants.ApiStatus>
         get() = _status
@@ -43,7 +48,7 @@ class RepresentativeViewModel : ViewModel(), Observable {
     fun getRepresentativesFromNetwork() {
         Log.d(
             "ReprensentativeViewModel",
-            "getRepresentativesFromNetwork: ${address.line1} ${address.line2}"
+            "getRepresentativesFromNetwork: ${newAddress.line1} ${newAddress.line2}"
         )
         viewModelScope.launch {
             _status.value = Constants.ApiStatus.LOADING
@@ -77,16 +82,55 @@ class RepresentativeViewModel : ViewModel(), Observable {
 //    fun setAddress(address: Address) {
 //        // _address.value = address
 //    }
+    private val _inputMsg = MutableLiveData<String>()
+    val inputMsg: LiveData<String>
+        get() = _inputMsg
 
     //: Create function to get address from individual fields
+
     @Bindable
-    var address = Address("", "", "", "", "")
+    var newAddress = Address("", "", "", "", "")
         set(value) {
             if (value != field) {
                 field = value
-                propertyChangeRegistry.notifyChange(this, BR.address)
+                propertyChangeRegistry.notifyChange(this, BR.newAddress)
             }
         }
+
+
+    // Add new shoe item
+    fun addNewAddress() {
+        newAddress.let {
+            if (isValidateInputs()) {
+                //_shoeList.value?.add(address)
+                Log.d("RepresentationViewModel", "addNewAddress: $newAddress")
+
+            }
+        }
+    }
+
+    // Address Input validation
+    private fun isValidateInputs(): Boolean {
+        when {
+//            newAddress.line1.isEmpty() -> {
+//                _inputMsg.value = "Enter Shoe Name"
+//                return false
+//            }
+//            newAddress.line2.isNullOrEmpty() -> {
+//                _inputMsg.value = "Enter L"
+//                return false
+//            }
+//            newAddress.city.isEmpty() -> {
+//                _inputMsg.value = "Enter City"
+//                return false
+//            }
+//            address.state.isEmpty() -> {
+//                _inputMsg.value = "Select State"
+//                return false
+//            }
+            else -> return true
+        }
+    }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         propertyChangeRegistry.add(callback)
