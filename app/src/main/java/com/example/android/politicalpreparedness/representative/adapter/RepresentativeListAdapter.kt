@@ -109,7 +109,7 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
             oldItem: Representative,
             newItem: Representative
         ): Boolean {
-            return oldItem.office == newItem.office
+            return oldItem.official == newItem.official
         }
     }
 }
