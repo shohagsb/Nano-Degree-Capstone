@@ -51,3 +51,5 @@ fun Spinner.setNewValue(value: String?) {
 inline fun <reified T> toTypedAdapter(adapter: ArrayAdapter<*>): ArrayAdapter<T> {
     return adapter as ArrayAdapter<T>
 }
+
+

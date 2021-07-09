@@ -19,8 +19,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.politicalpreparedness.BuildConfig
+import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
@@ -50,18 +53,23 @@ class DetailFragment : Fragment() {
     }
 
     //: Declare ViewModel
-    private val viewModel: RepresentativeViewModel by lazy {
-        ViewModelProvider(this).get(RepresentativeViewModel::class.java)
-    }
+    private lateinit var viewModel: RepresentativeViewModel
+    private lateinit var binding: FragmentRepresentativeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this).get(RepresentativeViewModel::class.java)
 
         //: Establish bindings
-        val binding = FragmentRepresentativeBinding.inflate(inflater)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_representative,
+            container,
+            false
+        )
 
         binding.lifecycleOwner = this
 
@@ -88,11 +96,16 @@ class DetailFragment : Fragment() {
 
         binding.state.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-               //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+                //viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-               // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                // viewModel.address.value?.state = binding.stateSpinner.selectedItem as String
             }
         }
         return binding.root
@@ -114,18 +127,18 @@ class DetailFragment : Fragment() {
                     grantResults[BACKGROUND_LOCATION_PERMISSION_INDEX] ==
                     PackageManager.PERMISSION_DENIED)
         ) {
-//            Snackbar.make(
-//                binding.repre,
-//                R.string.permission_denied_explanation,
-//                Snackbar.LENGTH_INDEFINITE
-//            )
-//                .setAction(R.string.settings) {
-//                    startActivity(Intent().apply {
-//                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-//                        data = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
-//                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//                    })
-//                }.show()
+            Snackbar.make(
+                binding.representativeFrag,
+                R.string.permission_denied_explanation,
+                Snackbar.LENGTH_INDEFINITE
+            )
+                .setAction(R.string.settings) {
+                    startActivity(Intent().apply {
+                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        data = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    })
+                }.show()
         } else {
             getLocation()
         }

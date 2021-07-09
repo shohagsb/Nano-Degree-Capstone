@@ -46,7 +46,6 @@ dependencies {
 
     // Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
-    implementation 'com.google.android.material:material:1.4.0'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
