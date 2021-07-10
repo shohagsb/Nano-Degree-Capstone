@@ -24,7 +24,7 @@ fun bindRepresentativeRecyclerView(recyclerView: RecyclerView, data: List<Repres
 fun fetchImage(view: ImageView, src: String?) {
     src?.let {
         val uri = src.toUri().buildUpon().scheme("https").build()
-        //: Add Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
+        //: Glide call to load image and circle crop - user ic_profile as a placeholder and for errors.
         Glide.with(view.context)
             .load(uri)
             .apply(

@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
 import com.example.android.politicalpreparedness.network.models.Election
+import java.text.SimpleDateFormat
+import java.util.*
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Election>?) {
@@ -26,6 +28,14 @@ fun bindTextViewToggleText(buttonView: Button, isElectionSaved: Boolean) {
         buttonView.text = context.getString(R.string.unfollow_election)
     } else {
         buttonView.text = context.getString(R.string.follow_election)
+    }
+}
+
+@BindingAdapter("dateFormatter")
+fun bindDateFormat(textView: TextView, date: Date?) {
+    val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+    date?.let {
+        textView.text = dateFormat.format(it)
     }
 }
 

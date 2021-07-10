@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.databinding.FragmentVoterInfoBinding
-import kotlinx.serialization.StringFormat
 
 class VoterInfoFragment : Fragment() {
 
@@ -21,14 +20,12 @@ class VoterInfoFragment : Fragment() {
         val id = VoterInfoFragmentArgs.fromBundle(requireArguments()).argElectionId
         val division = VoterInfoFragmentArgs.fromBundle(requireArguments()).argDivision
 
-        //: Add ViewModel values and create ViewModel
         val database = ElectionDatabase.getInstance(requireContext())
         val viewModel: VoterInfoViewModel = ViewModelProvider(
             this,
             VoterInfoViewModelFactory(id.toLong(), division, database)
         ).get(VoterInfoViewModel::class.java)
 
-        //: Add binding values
         val binding = FragmentVoterInfoBinding.inflate(inflater)
         binding.lifecycleOwner = this
 
@@ -41,13 +38,7 @@ class VoterInfoFragment : Fragment() {
             }
         })
 
-        //TODO: Populate voter info -- hide views without provided data.
-        /**
-        Hint: You will need to ensure proper data is provided from previous fragment.
-         */
-
         binding.voterInfo = division
-
 
         //: Handle loading of URLs
         viewModel.navigateToVotingUrl.observe(viewLifecycleOwner, {

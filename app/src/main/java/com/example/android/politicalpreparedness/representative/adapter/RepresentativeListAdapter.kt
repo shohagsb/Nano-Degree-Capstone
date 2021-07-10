@@ -15,7 +15,7 @@ import com.example.android.politicalpreparedness.databinding.ViewholderRepresent
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
 
-class RepresentativeListAdapter(private val clickListener: RepresentativeListener) :
+class RepresentativeListAdapter :
     ListAdapter<Representative, RepresentativeListAdapter.RepresentativeViewHolder>(
         RepresentativeDiffCallback
     ) {
@@ -37,7 +37,7 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
             binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
             //: Show social links ** Hint: Use provided helper methods
-            item.official.channels?.let { channels->
+            item.official.channels?.let { channels ->
                 showSocialLinks(channels)
             }
 
@@ -47,7 +47,6 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
             binding.executePendingBindings()
         }
 
-        //: Add companion object to inflate ViewHolder (from)
         companion object {
             fun from(parent: ViewGroup): RepresentativeViewHolder {
                 val inflater = LayoutInflater.from(parent.context)
@@ -96,7 +95,6 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
         }
     }
 
-    //: Create RepresentativeDiffCallback
     companion object RepresentativeDiffCallback : DiffUtil.ItemCallback<Representative>() {
         override fun areItemsTheSame(
             oldItem: Representative,
@@ -112,9 +110,4 @@ class RepresentativeListAdapter(private val clickListener: RepresentativeListene
             return oldItem.official == newItem.official
         }
     }
-}
-
-//: Create RepresentativeListener
-class RepresentativeListener(val clickListener: (representative: Representative) -> Unit) {
-    fun onClick(representative: Representative) = clickListener(representative)
 }

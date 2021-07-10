@@ -1,6 +1,5 @@
 package com.example.android.politicalpreparedness.repository
 
-import android.util.Log
 import com.example.android.politicalpreparedness.database.ElectionDatabase
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.models.Election
@@ -22,7 +21,6 @@ class ElectionRepository(private val database: ElectionDatabase) {
     // Fetch Voter Info data from Network
     fun getVoterInfo(address: String, id: Long): Flow<VoterInfoResponse> = flow {
         val voterInfo = CivicsApi.retrofitService.getVoterInfo(address, id)
-        Log.d("ElectionRepositoryTAG", "getVoterInfo: $voterInfo")
         emit(voterInfo)
     }.flowOn(Dispatchers.IO)
 
@@ -31,7 +29,7 @@ class ElectionRepository(private val database: ElectionDatabase) {
         database.electionDao.insertElection(election)
     }
 
-    // Fetch all election from room database
+    // Fetch all elections from room database
     fun getAllSavedElectionsFromDB(): Flow<List<Election>> = flow {
         val savedElections = database.electionDao.getAllSavedElections()
         emit(savedElections)

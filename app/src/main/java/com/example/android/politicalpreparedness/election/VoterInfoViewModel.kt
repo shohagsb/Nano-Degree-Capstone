@@ -26,7 +26,6 @@ class VoterInfoViewModel(
     val errorMsg: LiveData<String>
         get() = _errorMsg
 
-    //: Add live data to hold voter info
     private val _voterInfo = MutableLiveData<VoterInfoResponse>()
     val voterInfo: LiveData<VoterInfoResponse>
         get() = _voterInfo
@@ -44,7 +43,6 @@ class VoterInfoViewModel(
         getSingleElectionFromDB()
     }
 
-    //: Add var and methods to populate voter info
     private fun getVoterInfoFromNetwork() {
         viewModelScope.launch {
             _status.value = Constants.ApiStatus.LOADING
@@ -61,8 +59,7 @@ class VoterInfoViewModel(
         }
     }
 
-
-    //: Add var and methods to support loading URLs
+    //: to support loading URLs
     private val _navigateToVotingUrl = MutableLiveData<String>()
     val navigateToVotingUrl: LiveData<String>
         get() = _navigateToVotingUrl
@@ -127,8 +124,5 @@ class VoterInfoViewModel(
             _isElectionSaved.value = false
         }
     }
-    /**
-     * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the database.
-     */
 
 }

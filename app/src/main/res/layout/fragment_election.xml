@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_padding"
-            android:text="@string/upcoming_elections"
+            android:text="@string/saved_elections"
             app:layout_constraintBottom_toTopOf="@+id/saved_election_rc"
             app:layout_constraintTop_toBottomOf="@+id/upcoming_election_rc" />
 
@@ -73,6 +73,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/saved_election_label"
             tools:listitem="@layout/viewholder_election" />
+
+        <TextView
+            android:id="@+id/list_placeholder"
+            style="@style/text_placeholder_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data"
+            android:visibility="visible"
+            app:hasData="@{viewModel.hasData}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saved_election_label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

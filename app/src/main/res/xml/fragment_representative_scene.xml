@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
@@ -48,6 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toStartOf="@id/state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
@@ -57,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/city"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
@@ -66,6 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="@+id/city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />
@@ -134,6 +139,7 @@
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
@@ -145,6 +151,7 @@
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
@@ -155,6 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toStartOf="@id/state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
@@ -165,6 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_padding"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/city"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
@@ -175,6 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_padding"
             android:visibility="gone"
+            android:layout_marginTop="@dimen/small_padding"
             app:layout_constraintEnd_toEndOf="@+id/city"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/city" />
